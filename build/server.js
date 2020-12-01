@@ -29,6 +29,7 @@ const routes_1 = __importDefault(require("./database/routes"));
 const database_1 = require("./util/database/database");
 const coffee_machine_model_1 = __importDefault(require("./database/dbmodel/coffee-machine.model"));
 const request_logger_middleware_1 = require("./util/request-logger-middleware");
+const cofee_pod_1 = __importDefault(require("./database/dbmodel/cofee-pod"));
 const app = express_1.default();
 exports.app = app;
 app.use(bodyParser.json());
@@ -38,6 +39,7 @@ app.get('/hello', (req, res, next) => {
     res.send('Hello world');
 });
 database_1.addModel(coffee_machine_model_1.default);
+database_1.addModel(cofee_pod_1.default);
 app.listen(process.env.PORT || 4040, () => {
     console.log("server started");
 });

@@ -4,6 +4,7 @@ import appRouter from './database/routes';
 import { addModel } from './util/database/database';
 import CoffeeMachine from './database/dbmodel/coffee-machine.model';
 import { requestLoggerMiddleware } from './util/request-logger-middleware';
+import CoffeePod from './database/dbmodel/cofee-pod';
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,6 +16,7 @@ app.get('/hello', (req, res, next) => {
 });
 
 addModel(CoffeeMachine);
+addModel(CoffeePod);
 export { app }
 app.listen(process.env.PORT || 4040, () => {
   console.log("server started");

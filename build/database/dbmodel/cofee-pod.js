@@ -23,7 +23,7 @@ __decorate([
 ], CoffeePod.prototype, "PackSize", void 0);
 CoffeePod = __decorate([
     sequelize_typescript_1.Table({
-        tableName: 'CoffeePod',
+        tableName: 'coffee_pod',
         timestamps: false,
         freezeTableName: true,
     })

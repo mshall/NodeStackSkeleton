@@ -1,5 +1,6 @@
 import { Sequelize, ModelCtor } from 'sequelize-typescript';
 import appConfig from '../../config';
+import CoffeePod from '../../database/dbmodel/cofee-pod';
 import CoffeeMachine from '../../database/dbmodel/coffee-machine.model';
 
 const sequelize = new Sequelize(
@@ -26,7 +27,6 @@ sequelize
   .catch((err) => {
     console.error('Sequelize.intialize -> Unable to connect to database', err);
   });
-sequelize.addModels([CoffeeMachine]);
 export function addModel(model: ModelCtor): any {
   return sequelize.addModels([model]);
 }

@@ -57,10 +57,10 @@ export default class CoffeeMachineRepository {
       'CoffeeMachineRepository.findCoffeeMachineByProductType',
       'Incoming product type: ' + productType,
     );
-    let mobileBEConfig = null;
+    let coffeeMachine = null;
     try {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      mobileBEConfig = await CoffeeMachine.findOne({ where: { ProductType: productType } });
+      coffeeMachine = await CoffeeMachine.findAll({ where: { ProductType: productType } });
     } catch (error) {
       GeneralUtils.printInitiateMessage(
         'CoffeeMachineRepository.findCoffeeMachineByProductType',
@@ -72,21 +72,21 @@ export default class CoffeeMachineRepository {
       );
       GeneralUtils.printStarsLine();
     }
-    return mobileBEConfig;
+    return coffeeMachine;
   }
 
-  async findCoffeeMachineByWaterLineCompatible(waterLineCompatible: string): Promise<any> {
+  async findCoffeeMachineByWaterLineCompatible(waterLineCompatible: any): Promise<any> {
     GeneralUtils.printStarsLine();
     GeneralUtils.printInitiateMessage(
-      'CoffeeMachineRepository.findCoffeeMachineByWaterLineCompatible', 'End',
+      'CoffeeMachineRepository.findCoffeeMachineByWaterLineCompatible', 'Start',
     );
     GeneralUtils.printInitiateMessage(
       'CoffeeMachineRepository.findCoffeeMachineByWaterLineCompatible',
       'Incoming water line compatible: ' + waterLineCompatible,
     );
-    let mobileBEConfig = null;
+    let coffeeMachine = null;
     try {
-      mobileBEConfig = await CoffeeMachine.findOne(
+      coffeeMachine = await CoffeeMachine.findAll(
         {
           where: { WaterLineCompatible: waterLineCompatible }
         });
@@ -101,9 +101,38 @@ export default class CoffeeMachineRepository {
       );
       GeneralUtils.printStarsLine();
     }
-    return mobileBEConfig;
+    return coffeeMachine;
   }
 
+  async findCoffeeMachineByAllFields(incomingProductType: any,
+    incomingWaterLineCompatible: any): Promise<any> {
+    GeneralUtils.printStarsLine();
+    GeneralUtils.printInitiateMessage(
+      'CoffeeMachineRepository.findCoffeeMachineByAllFields', 'Start',
+    );
+    
+    let coffeeMachine = null;
+    try {
+      coffeeMachine = await CoffeeMachine.findOne(
+        {
+          where: {
+            ProductType: incomingProductType,
+            WaterLineCompatible: incomingWaterLineCompatible
+          }
+        });
+    } catch (error) {
+      GeneralUtils.printInitiateMessage(
+        'CoffeeMachineRepository.findCoffeeMachineByAllFields',
+        'Exception',
+      );
+      console.error(error);
+      GeneralUtils.printInitiateMessage(
+        'CoffeeMachineRepository.findCoffeeMachineByAllFields', 'End',
+      );
+      GeneralUtils.printStarsLine();
+    }
+    return coffeeMachine;
+  }
   async UpdateConfigProperty(coffeeMachine: any) {
     let updateResult: any = null;
     try {
