@@ -5,9 +5,9 @@ import GeneralUtils from "../util/GeneralUtils";
 
 const coffeeMachineRouter = Router();
 const coffeeMachineRepository: CoffeeMachineRepository = new CoffeeMachineRepository();
-  //-----------------------------------------
-  // Find all coffee machines
-  //-----------------------------------------
+//-----------------------------------------
+// Find all coffee machines
+//-----------------------------------------
 coffeeMachineRouter.
   route('/')
   .get(async (
@@ -61,9 +61,9 @@ coffeeMachineRouter.
     }
   });
 
-  //-----------------------------------------
-  // Find coffee machines given water line
-  //-----------------------------------------
+//-----------------------------------------
+// Find coffee machines given water line
+//-----------------------------------------
 coffeeMachineRouter.
   route('/waterline/:isWaterLineCompatible')
   .get(async (
@@ -89,9 +89,9 @@ coffeeMachineRouter.
     }
   });
 
-  //-----------------------------------------
-  // Find coffee machines based on all fields
-  //-----------------------------------------
+//-----------------------------------------
+// Find coffee machines based on all fields
+//-----------------------------------------
 coffeeMachineRouter.
   route('/all')
   .get(async (

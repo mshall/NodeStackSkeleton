@@ -5,6 +5,10 @@ import CoffeePodRepository from '../database/repository/coffee-pod.repository';
 
 const coffeePodRouter = Router();
 const coffeePodRepository: CoffeePodRepository = new CoffeePodRepository();
+
+//-----------------------------------------
+// Find all coffee pods
+//-----------------------------------------
 coffeePodRouter.
   route('/')
   .get(async (
@@ -30,6 +34,9 @@ coffeePodRouter.
 
   });
 
+//-----------------------------------------
+// Find coffee pods given product type
+//-----------------------------------------
 coffeePodRouter.
   route('/productType/:productType')
   .get(async (
@@ -55,7 +62,9 @@ coffeePodRouter.
       );
     }
   });
-
+//-----------------------------------------
+// Find coffee pods given flavor
+//-----------------------------------------
 coffeePodRouter.
   route('/flavor/:flavor')
   .get(async (
@@ -80,7 +89,9 @@ coffeePodRouter.
       );
     }
   });
-
+//-----------------------------------------
+// Find coffee pods given pack size
+//-----------------------------------------
 coffeePodRouter.
   route('/packSize/:packSize')
   .get(async (
@@ -106,6 +117,9 @@ coffeePodRouter.
     }
   });
 
+//-----------------------------------------
+// Find coffee pods given all fields
+//-----------------------------------------
 coffeePodRouter.
   route('/all')
   .get(async (
@@ -132,7 +146,9 @@ coffeePodRouter.
       );
     }
   });
-
+//-----------------------------------------
+// Add a new coffee pod
+//-----------------------------------------
 coffeePodRouter.
   route('/')
   .post(async (

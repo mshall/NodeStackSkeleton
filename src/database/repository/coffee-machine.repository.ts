@@ -10,7 +10,7 @@ export default class CoffeeMachineRepository {
     let coffeeMachine: CoffeeMachine = new CoffeeMachine();
     coffeeMachine.Id = incomingCoffeeMachine.Id;
     coffeeMachine.ProductType = incomingCoffeeMachine.ProductType;
-    coffeeMachine.WaterLineCompatible= incomingCoffeeMachine.WaterLineCompatible;
+    coffeeMachine.WaterLineCompatible = incomingCoffeeMachine.WaterLineCompatible;
     try {
       const savedConfig = await coffeeMachine.save();
       GeneralUtils.printInitiateMessage(
@@ -30,16 +30,22 @@ export default class CoffeeMachineRepository {
     }
   }
 
+  //-----------------------------------------
+  // Find All coffee machines
+  //-----------------------------------------
   async findAllCoffeeMachines() {
     const coffeeMachinesList = await CoffeeMachine.findAll();
     GeneralUtils.printInitiateMessage(
       'CoffeeMachineRepository.findAllCoffeeMachines', 'Result: '
-      + JSON.stringify(coffeeMachinesList));
+    + JSON.stringify(coffeeMachinesList));
     GeneralUtils.printInitiateMessage(
       'CoffeeMachineRepository.findAllCoffeeMachines', 'End');
     return coffeeMachinesList;
   }
 
+  //-----------------------------------------
+  // Find coffee machine by id
+  //-----------------------------------------
   async findCoffeeMachineById(incomingId: string): Promise<any> {
     let coffeeMachine = null;
     try {
@@ -49,7 +55,9 @@ export default class CoffeeMachineRepository {
     }
     return coffeeMachine;
   }
-
+  //-----------------------------------------
+  // Find coffee machine by product type
+  //-----------------------------------------
   async findCoffeeMachineByProductType(productType: string): Promise<any> {
     GeneralUtils.printStarsLine();
     GeneralUtils.printInitiateMessage('CoffeeMachineRepository.findCoffeeMachineByProductType', 'End');
@@ -74,7 +82,9 @@ export default class CoffeeMachineRepository {
     }
     return coffeeMachine;
   }
-
+  //-----------------------------------------
+  // Find coffee machine by water compatible line 
+  //-----------------------------------------
   async findCoffeeMachineByWaterLineCompatible(waterLineCompatible: any): Promise<any> {
     GeneralUtils.printStarsLine();
     GeneralUtils.printInitiateMessage(
@@ -103,14 +113,16 @@ export default class CoffeeMachineRepository {
     }
     return coffeeMachine;
   }
-
+  //-----------------------------------------
+  // Find coffee machine by all fields
+  //-----------------------------------------
   async findCoffeeMachineByAllFields(incomingProductType: any,
     incomingWaterLineCompatible: any): Promise<any> {
     GeneralUtils.printStarsLine();
     GeneralUtils.printInitiateMessage(
       'CoffeeMachineRepository.findCoffeeMachineByAllFields', 'Start',
     );
-    
+
     let coffeeMachine = null;
     try {
       coffeeMachine = await CoffeeMachine.findOne(
