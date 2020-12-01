@@ -18,21 +18,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.app = void 0;
-var express_1 = __importDefault(require("express"));
-var bodyParser = __importStar(require("body-parser"));
-var routes_1 = __importDefault(require("./database/routes"));
-var app = express_1.default();
-exports.app = app;
-app.use(bodyParser.json());
-app.use(routes_1.default);
-app.get('/hello', function (req, res, next) {
-    res.send('Hello world');
-});
-app.listen(process.env.PORT || 4040, function () {
-    console.log("server started");
-});
+var server_1 = require("./server");
+var http = __importStar(require("http"));
+var PORT = 4000;
+var server = http.createServer(server_1.app);
+server.listen(PORT);
