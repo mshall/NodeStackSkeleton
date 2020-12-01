@@ -10,6 +10,9 @@ const coffee_pod_repository_1 = __importDefault(require("../database/repository/
 const coffeePodRouter = express_1.Router();
 exports.coffeePodRouter = coffeePodRouter;
 const coffeePodRepository = new coffee_pod_repository_1.default();
+//-----------------------------------------
+// Find all coffee pods
+//-----------------------------------------
 coffeePodRouter.
     route('/')
     .get(async (request, response, next) => {
@@ -25,6 +28,9 @@ coffeePodRouter.
         GeneralUtils_1.default.printInitiateMessage('CoffeePodController.findAllCoffeePods', 'End');
     }
 });
+//-----------------------------------------
+// Find coffee pods given product type
+//-----------------------------------------
 coffeePodRouter.
     route('/productType/:productType')
     .get(async (request, response, next) => {
@@ -42,6 +48,9 @@ coffeePodRouter.
         GeneralUtils_1.default.printInitiateMessage('CoffeePodController.findProductType', 'End');
     }
 });
+//-----------------------------------------
+// Find coffee pods given flavor
+//-----------------------------------------
 coffeePodRouter.
     route('/flavor/:flavor')
     .get(async (request, response, next) => {
@@ -58,6 +67,9 @@ coffeePodRouter.
         GeneralUtils_1.default.printInitiateMessage('CoffeePodController.findByFlavor', 'End');
     }
 });
+//-----------------------------------------
+// Find coffee pods given pack size
+//-----------------------------------------
 coffeePodRouter.
     route('/packSize/:packSize')
     .get(async (request, response, next) => {
@@ -74,6 +86,9 @@ coffeePodRouter.
         GeneralUtils_1.default.printInitiateMessage('CoffeePodController.findByPackSize', 'End');
     }
 });
+//-----------------------------------------
+// Find coffee pods given all fields
+//-----------------------------------------
 coffeePodRouter.
     route('/all')
     .get(async (request, response, next) => {
@@ -92,6 +107,9 @@ coffeePodRouter.
         GeneralUtils_1.default.printInitiateMessage('CoffeePodController.findByAll', 'End');
     }
 });
+//-----------------------------------------
+// Add a new coffee pod
+//-----------------------------------------
 coffeePodRouter.
     route('/')
     .post(async (request, response, next) => {

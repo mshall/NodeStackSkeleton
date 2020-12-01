@@ -28,6 +28,9 @@ class CoffeeMachineRepository {
             GeneralUtils_1.default.printStarsLine();
         }
     }
+    //-----------------------------------------
+    // Find All coffee machines
+    //-----------------------------------------
     async findAllCoffeeMachines() {
         const coffeeMachinesList = await coffee_machine_model_1.default.findAll();
         GeneralUtils_1.default.printInitiateMessage('CoffeeMachineRepository.findAllCoffeeMachines', 'Result: '
@@ -35,6 +38,9 @@ class CoffeeMachineRepository {
         GeneralUtils_1.default.printInitiateMessage('CoffeeMachineRepository.findAllCoffeeMachines', 'End');
         return coffeeMachinesList;
     }
+    //-----------------------------------------
+    // Find coffee machine by id
+    //-----------------------------------------
     async findCoffeeMachineById(incomingId) {
         let coffeeMachine = null;
         try {
@@ -45,6 +51,9 @@ class CoffeeMachineRepository {
         }
         return coffeeMachine;
     }
+    //-----------------------------------------
+    // Find coffee machine by product type
+    //-----------------------------------------
     async findCoffeeMachineByProductType(productType) {
         GeneralUtils_1.default.printStarsLine();
         GeneralUtils_1.default.printInitiateMessage('CoffeeMachineRepository.findCoffeeMachineByProductType', 'End');
@@ -62,6 +71,9 @@ class CoffeeMachineRepository {
         }
         return coffeeMachine;
     }
+    //-----------------------------------------
+    // Find coffee machine by water compatible line 
+    //-----------------------------------------
     async findCoffeeMachineByWaterLineCompatible(waterLineCompatible) {
         GeneralUtils_1.default.printStarsLine();
         GeneralUtils_1.default.printInitiateMessage('CoffeeMachineRepository.findCoffeeMachineByWaterLineCompatible', 'Start');
@@ -80,6 +92,9 @@ class CoffeeMachineRepository {
         }
         return coffeeMachine;
     }
+    //-----------------------------------------
+    // Find coffee machine by all fields
+    //-----------------------------------------
     async findCoffeeMachineByAllFields(incomingProductType, incomingWaterLineCompatible) {
         GeneralUtils_1.default.printStarsLine();
         GeneralUtils_1.default.printInitiateMessage('CoffeeMachineRepository.findCoffeeMachineByAllFields', 'Start');
