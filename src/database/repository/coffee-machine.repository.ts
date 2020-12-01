@@ -4,25 +4,40 @@ import CoffeeMachine from '../dbmodel/coffee-machine.model';
 
 export default class CoffeeMachineRepository {
 
-  async addNewCoffeeMachine(coffeeMachine: CoffeeMachine): Promise<any> {
+  async addNewCoffeeMachine(incomingCoffeeMachine: any): Promise<any> {
     GeneralUtils.printStarsLine();
     GeneralUtils.printInitiateMessage('CoffeeMachineRepository.addNewCoffeeMachine', 'Start');
-
+    let coffeeMachine: CoffeeMachine = new CoffeeMachine();
+    coffeeMachine.Id = incomingCoffeeMachine.Id;
+    coffeeMachine.ProductType = incomingCoffeeMachine.ProductType;
+    coffeeMachine.WaterLineCompatible= incomingCoffeeMachine.WaterLineCompatible;
     try {
       const savedConfig = await coffeeMachine.save();
-      GeneralUtils.printInitiateMessage('CoffeeMachineRepository.addNewCoffeeMachine', 'End');
+      GeneralUtils.printInitiateMessage(
+        'CoffeeMachineRepository.addNewCoffeeMachine', 'Result: '
+      + JSON.stringify(savedConfig));
+      GeneralUtils.printInitiateMessage(
+        'CoffeeMachineRepository.addNewCoffeeMachine', 'End');
       GeneralUtils.printStarsLine();
       return savedConfig;
     } catch (e) {
-      GeneralUtils.printInitiateMessage('CoffeeMachineRepository.addNewCoffeeMachine', 'Exception');
+      GeneralUtils.printInitiateMessage(
+        'CoffeeMachineRepository.addNewCoffeeMachine', 'Exception');
       console.error(e);
-      GeneralUtils.printInitiateMessage('CoffeeMachineRepository.addNewCoffeeMachine', 'End');
+      GeneralUtils.printInitiateMessage(
+        'CoffeeMachineRepository.addNewCoffeeMachine', 'End');
       GeneralUtils.printStarsLine();
     }
   }
 
-  async findAllMachineCoffees() {
-    return await CoffeeMachine.findAll();
+  async findAllCoffeeMachines() {
+    const coffeeMachinesList = await CoffeeMachine.findAll();
+    GeneralUtils.printInitiateMessage(
+      'CoffeeMachineRepository.findAllCoffeeMachines', 'Result: '
+      + JSON.stringify(coffeeMachinesList));
+    GeneralUtils.printInitiateMessage(
+      'CoffeeMachineRepository.findAllCoffeeMachines', 'End');
+    return coffeeMachinesList;
   }
 
   async findCoffeeMachineById(incomingId: string): Promise<any> {

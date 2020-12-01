@@ -23,16 +23,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
-var express_1 = __importDefault(require("express"));
-var bodyParser = __importStar(require("body-parser"));
-var routes_1 = __importDefault(require("./database/routes"));
-var app = express_1.default();
+const express_1 = __importDefault(require("express"));
+const bodyParser = __importStar(require("body-parser"));
+const routes_1 = __importDefault(require("./database/routes"));
+const database_1 = require("./util/database/database");
+const coffee_machine_model_1 = __importDefault(require("./database/dbmodel/coffee-machine.model"));
+const request_logger_middleware_1 = require("./util/request-logger-middleware");
+const app = express_1.default();
 exports.app = app;
 app.use(bodyParser.json());
+app.use(request_logger_middleware_1.requestLoggerMiddleware);
 app.use(routes_1.default);
-app.get('/hello', function (req, res, next) {
+app.get('/hello', (req, res, next) => {
     res.send('Hello world');
 });
-app.listen(process.env.PORT || 4040, function () {
+database_1.addModel(coffee_machine_model_1.default);
+app.listen(process.env.PORT || 4040, () => {
     console.log("server started");
 });

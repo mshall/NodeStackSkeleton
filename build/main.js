@@ -19,8 +19,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var server_1 = require("./server");
-var http = __importStar(require("http"));
-var PORT = 4000;
-var server = http.createServer(server_1.app);
+const server_1 = require("./server");
+const http = __importStar(require("http"));
+const PORT = 4000;
+const server = http.createServer(server_1.app);
 server.listen(PORT);

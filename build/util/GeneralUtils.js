@@ -1,14 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var GeneralUtils = /** @class */ (function () {
-    function GeneralUtils() {
-    }
-    GeneralUtils.printInitiateMessage = function (firstInput, secondInput) {
+class GeneralUtils {
+    static printInitiateMessage(firstInput, secondInput) {
         console.log(firstInput + ' -> ' + secondInput);
-    };
-    GeneralUtils.printStarsLine = function () {
+    }
+    static printStarsLine() {
         console.log('****************************');
-    };
-    return GeneralUtils;
-}());
+    }
+}
 exports.default = GeneralUtils;

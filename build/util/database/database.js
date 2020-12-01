@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sequelize = exports.addModel = void 0;
-var sequelize_typescript_1 = require("sequelize-typescript");
-var config_1 = __importDefault(require("../../config"));
-var coffee_machine_model_1 = __importDefault(require("../../database/dbmodel/coffee-machine.model"));
-var sequelize = new sequelize_typescript_1.Sequelize(config_1.default.database.database, config_1.default.database.username, config_1.default.database.password, {
+const sequelize_typescript_1 = require("sequelize-typescript");
+const config_1 = __importDefault(require("../../config"));
+const coffee_machine_model_1 = __importDefault(require("../../database/dbmodel/coffee-machine.model"));
+const sequelize = new sequelize_typescript_1.Sequelize(config_1.default.database.database, config_1.default.database.username, config_1.default.database.password, {
     host: config_1.default.database.host,
     port: config_1.default.database.port,
     dialect: "postgres",
@@ -22,10 +22,10 @@ var sequelize = new sequelize_typescript_1.Sequelize(config_1.default.database.d
 exports.sequelize = sequelize;
 sequelize
     .authenticate()
-    .then(function (err) {
+    .then((err) => {
     console.info('Sequelize.intialize -> Connection successful');
 })
-    .catch(function (err) {
+    .catch((err) => {
     console.error('Sequelize.intialize -> Unable to connect to database', err);
 });
 sequelize.addModels([coffee_machine_model_1.default]);
